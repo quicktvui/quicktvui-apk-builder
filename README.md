@@ -12,12 +12,12 @@ sdk.dir=AndroidSDK路径
 ### 3.1 根据需求修改apk项目根目录的app.json:
 ``` json
 {
-  "_app_package": "net.quicktv.sample",     // 生成APK的包名
+  "_app_package": "com.quicktv.sample",     // 生成APK的包名
   "_app_name": "QuickTV-Sample",            // 生成APK的名字
   "_version_code": 1,                       // 版本Code，最小是1
   "_version_name": "1.0.0",                 // 版本显示名称
   "_repository": "http://hub.quicktvui.com/repository/rpk", // 默认app加载源地
-  "_load_app": "liulipeng/zoo"              // 加载应用名称
+  "_load_app": "quicktv/hello_world"        // 加载应用名称
 }
 ```
 ### 3.2 更新引入的SDK版本
