@@ -1,0 +1,70 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.quicktv.sample'          // 一般不改动
+    compileSdk sdk_compileSdk
+
+    defaultConfig {
+        applicationId _app_package
+        minSdk sdk_minSdk
+        targetSdk sdk_targetSdk
+        versionCode _version_code
+        versionName _version_name
+
+        resValue "string", "app_name", _app_name
+
+        buildConfigField 'String', 'LOAD_REPOSITORY', "\"${_repository}\""
+        buildConfigField 'String', 'LOAD_APP_NAME', "\"${_load_app}\""
+
+        multiDexEnabled true
+
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${_app_name}_${defaultConfig.versionName}_${releaseTime()}_${buildType.name}.apk"
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            // 此处替换自己签名
+            signingConfig signingConfigs.create("release")
+            signingConfig.initWith(buildTypes.debug.signingConfig)
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        pickFirst 'lib/**/libc++_shared.so'
+    }
+}
+
+dependencies {
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+
+    implementation 'com.extscreen.runtime:official:2.8.0'
+    implementation 'eskit.sdk.support:video-cache-support:0.0.4-SNAPSHOT'
+
+    implementation 'eskit.sdk.support.so:hp-v1-armeabi-v7a:1.0.1'
+    implementation 'eskit.sdk.support.so:hp-v1-arm64-v8a:1.0.1'
+
+    implementation 'eskit.sdk.support.so:ijk-player-armeabi-v7a:1.0.0'
+    implementation 'eskit.sdk.support.so:ijk-player-arm64-v8a:1.0.0'
+}
