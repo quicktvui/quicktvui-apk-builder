@@ -4,5 +4,5 @@
   "_version_code": 1,
   "_version_name": "1.0.0",
   "_repository": "http://hub.quicktvui.com/repository/rpk",
-  "_load_app": "quicktv/hello"
+  "_load_app": "@quicktvui/api-demo"
 }

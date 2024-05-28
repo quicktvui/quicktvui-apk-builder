@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         // 第一步 设置启动参数
         EsData data = new EsData();
-        data.setAppPackage(BuildConfig.LOAD_APP_NAME);
+        data.setAppPackage(BuildConfig.LOAD_APP_NAME.replaceAll("@", ""));
 
         // 第二步 启动
         EsManager.get().start(data);
