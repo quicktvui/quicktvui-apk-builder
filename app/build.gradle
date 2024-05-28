@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'com.quicktv.sample'          // 一般不改动
+    namespace 'com.quicktv.apk.builder'          // 一般不改动
     compileSdk sdk_compileSdk
 
     defaultConfig {

@@ -1,4 +1,4 @@
-package net.quicktv.sample;
+package com.quicktv.apk.builder;
 
 import android.os.Bundle;
 
